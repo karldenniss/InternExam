@@ -77,8 +77,12 @@ class UserController extends Controller
 
         return back()->with('message', 'User Updated Successfully');
     }
-    // Update an existing user in the database.
-    public function destroy() {}
+    // Delete an existing user in the database.
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('/')->with('message', 'User deleted successfully');
+    }
     //Display a list of all active users.
     public function activeUsers()
     {

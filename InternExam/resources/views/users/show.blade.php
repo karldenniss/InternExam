@@ -13,5 +13,10 @@
 </p>
 <div>
     <a href="/users/{{$user->id}}/edit">Edit</a>
+    <form method="POST"action="/users/{{$user->id}}">
+        @csrf
+        @method('DELETE')
+        <button>Delete</button>
+    </form>
 </div>
 @endsection

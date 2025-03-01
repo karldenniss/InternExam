@@ -23,5 +23,8 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 // Update User
 Route::put('/users/{user}', [UserController::class, 'update']);
 
+// Delete User
+Route::delete('/users/{user}', [UserController::class, 'destroy']);
+
 //Single User
 Route::get('/users/{user}', [UserController::class, 'show']);
