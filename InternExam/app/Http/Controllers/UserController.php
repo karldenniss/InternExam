@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         return view('users.index', [
             'heading' => 'List of all users',
-            'users' => User::latest()->get()
+            'users' => User::latest()->simplePaginate(5)
         ]);
     }
 
@@ -32,11 +32,13 @@ class UserController extends Controller
     //Store a new user in the database.
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => ['required', 'email'],
-            'password' => 'required',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required',
+            ]
+        );
 
         //create the new user
         User::create([
@@ -49,10 +51,32 @@ class UserController extends Controller
         return redirect('/');
     }
     //Display a form to edit an existing user.
-    public function edit() {}
+    public function edit(User $user)
+    {
+        return view('users.edit', ['user' => $user]);
+    }
 
     //Update an existing user in the database.
-    public function update() {}
+    public function update(Request $request, User $user)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => ['required', 'email'],
+                'password' => 'required',
+            ]
+        );
+
+        //create the new user
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'active' => $request->has('active') ? 1 : 0,
+        ]);
+
+        return back()->with('message', 'User Updated Successfully');
+    }
     // Update an existing user in the database.
     public function destroy() {}
     //Display a list of all active users.

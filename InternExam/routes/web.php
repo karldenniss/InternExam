@@ -17,5 +17,11 @@ Route::get('/users/create', [UserController::class, 'create'])->name('create');
 //Store User
 Route::post('/users', [UserController::class, 'store']);
 
+// Edit Form
+Route::get('/users/{user}/edit', [UserController::class, 'edit']);
+
+// Update User
+Route::put('/users/{user}', [UserController::class, 'update']);
+
 //Single User
 Route::get('/users/{user}', [UserController::class, 'show']);
