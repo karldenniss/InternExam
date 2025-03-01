@@ -8,6 +8,10 @@
 </head>
 <body>
     <h1>InternExam</h1>
+    {{-- <a href="{{ route('isActive')}}">Show Active Users</a> --}}
+    <a href="{{ route('isActive')}}">Show Active Users</a>
+    <a href="/">back</a>
+    <a href="{{ route('create')}}">Register User</a>
     {{-- VIEW OUTPUT --}}
     @yield('content')
 </body>

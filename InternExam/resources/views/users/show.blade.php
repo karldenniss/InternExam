@@ -8,5 +8,8 @@
 <p>
     {{$user['email']}}
 </p>
+<p>
+    {{ $user['active'] ? 'Active' : 'Inactive' }}
+</p>
 
 @endsection
