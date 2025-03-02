@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>Edit User</h2>
-<p>Edit {{$user->name}}</p>
+<p class="edit-name">Edit {{$user->name}}</p>
 <div class="createform">
     <form method="POST" action="/users/{{$user->id}}">
         @csrf

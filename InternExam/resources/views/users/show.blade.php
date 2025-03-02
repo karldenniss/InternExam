@@ -2,16 +2,16 @@
 
 @section('content')
 
-<h2>
+<h2 class="user-name">
     {{$user['name']}}
 </h2>
-<p>
+<p class="user-email">
     {{$user['email']}}
 </p>
-<p>
+<p class="isActive">
     {{ $user['active'] ? 'Active' : 'Inactive' }}
 </p>
-<div>
+<div class="edit-delete">
     <a href="/users/{{$user->id}}/edit">Edit</a>
     <form method="POST"action="/users/{{$user->id}}">
         @csrf

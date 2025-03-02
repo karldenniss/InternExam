@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         return view('users.index', [
             'heading' => 'List of all users',
-            'users' => User::latest()->simplePaginate(5)
+            'users' => User::latest()->simplePaginate(7)
         ]);
     }
 

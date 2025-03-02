@@ -25,8 +25,7 @@
                 <p>{{$message}}</p>
             @enderror
         </div>
-        </div>
-        <button type="submit">Create User</button>
+        <button class="creatediv" type="submit">Create User</button>
     </form>
 </div>
 @endsection
